@@ -1,4 +1,4 @@
-import { Agent, callable } from "agents";
+import { Agent } from "agents";
 
 export class YashuAgent extends Agent {
   onStart() {
@@ -14,7 +14,6 @@ export class YashuAgent extends Agent {
     }
   }
 
-  @callable()
   async chat(message) {
     // Read previous messages from state, default to empty array
     const history = this.state.history || [];
@@ -87,7 +86,6 @@ Keep your responses conversational, engaging, and authentic. Be yourself - be Ya
     return response;
   }
 
-  @callable()
   async getStats() {
     return {
       messageCount: (this.state.history || []).length / 2, // Divide by 2 since each exchange is 2 messages
