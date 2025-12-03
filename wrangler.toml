@@ -1,0 +1,15 @@
+name = "cf-yashu-agent"
+main = "src/index.js"
+compatibility_date = "2024-11-01"
+
+[ai]
+binding = "AI"
+
+[[durable_objects.bindings]]
+name = "YashuAgent"
+class_name = "YashuAgent"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["YashuAgent"]
+
