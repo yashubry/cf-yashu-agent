@@ -24,7 +24,9 @@ export default {
 
         // Get or create agent instance (use agentId if provided, otherwise "default")
         const agentName = agentId || "default";
-        const agent = env.YashuAgent.get(agentName);
+        // Create a DurableObjectId from the name
+        const id = env.YashuAgent.idFromName(agentName);
+        const agent = env.YashuAgent.get(id);
 
         // Call the chat method
         const response = await agent.chat(message);
