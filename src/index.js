@@ -1,5 +1,8 @@
 import { YashuAgent } from "./agent/YashuAgent.js";
 
+// Export the Durable Object class for Wrangler
+export { YashuAgent };
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
