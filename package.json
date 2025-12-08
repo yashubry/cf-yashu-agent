@@ -1,6 +1,6 @@
 {
   "name": "cf-yashu-agent",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A minimal AI chat agent built with Cloudflare Agents SDK",
   "main": "src/index.js",
   "scripts": {
