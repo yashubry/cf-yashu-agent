@@ -1,5 +1,4 @@
 import { YashuAgent } from "./agent/YashuAgent.js";
-import { AgentNamespace, handleRequest } from "agents";
 
 // Export the Durable Object class for Wrangler
 export { YashuAgent };
