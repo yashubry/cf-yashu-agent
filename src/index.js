@@ -1,16 +1,17 @@
 import { YashuAgent } from "./agent/YashuAgent.js";
+import { AgentNamespace, handleRequest } from "agents";
 
 // Export the Durable Object class for Wrangler
 export { YashuAgent };
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    // Handle /api/chat POST endpoint
+    // Handle /api/chat POST endpoint using AgentNamespace
     if (url.pathname === "/api/chat" && request.method === "POST") {
       try {
-        const { message, agentId } = await request.json();
+        const { message } = await request.json();
         
         if (!message) {
           return new Response(
@@ -22,12 +23,10 @@ export default {
           );
         }
 
-        // Get or create agent instance (use agentId if provided, otherwise "default")
-        const agentName = agentId || "default";
-        // Create a DurableObjectId from the name
-        const id = env.YashuAgent.idFromName(agentName);
-        const agent = env.YashuAgent.get(id);
-
+        // Create agent instance with fixed ID using AgentNamespace pattern
+        const agentId = env.YashuAgent.idFromName("yashu");
+        const agent = env.YashuAgent.get(agentId);
+        
         // Call the chat method
         const response = await agent.chat(message);
 
