@@ -7,7 +7,7 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    // Handle /api/chat POST endpoint using AgentNamespace
+    // Handle /api/chat POST endpoint
     if (url.pathname === "/api/chat" && request.method === "POST") {
       try {
         const { message } = await request.json();
@@ -22,7 +22,7 @@ export default {
           );
         }
 
-        // Create agent instance with fixed ID using AgentNamespace pattern
+        // Create agent instance with fixed ID
         const agentId = env.YashuAgent.idFromName("yashu");
         const agent = env.YashuAgent.get(agentId);
         
